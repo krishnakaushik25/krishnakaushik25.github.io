@@ -58,48 +58,48 @@ document.addEventListener("DOMContentLoaded", showCards2);
 // Hackathon Section
 
 
-const hackathonsection = document.querySelector(".hackathon-section");
-const mentor = [
-  {
-    title: "Amazon ML Challenge HackerEarth",
-    subtitle: "Machine Learning",
-    image: "assets/images/experience-page/amazon-ml.jpg",
-    desp: "Text sequence Based Multi-class classification on a huge dataset. I solved by ensembling of different state-of-the-art Deep Learning algorithms. ",
-  },
-  {
-    title: "Dphi Deep Learning Bootcamp",
-    subtitle: "Gender Determination by Morphometry of Eyes",
-    image: "assets/images/experience-page/dphi-dl.png",
-    desp: "Participated in this competetion as part of Deep Learning Bootcamp.The challenge is to solve Binary prediction of image: male eye or female eye based on the image of eye.I solved by using different models like DenseNet201 with weights preloaded from Imagenet. I was ranked 14/116 in the competetion. ",
-  },
-  {
-    title: "Geoffrey Hinton Fellowship(GHF)",
-    subtitle: "Univ.ai Hackathons",
-    image: "assets/images/experience-page/univ_ai.jpg",
-    desp: "Partcipated in two hackathon rounds as part oF GHF conducted by Univ.ai and stood 1st in my college.",
-  },
+// const hackathonsection = document.querySelector(".hackathon-section");
+// const mentor = [
+//   {
+//     title: "Amazon ML Challenge HackerEarth",
+//     subtitle: "Machine Learning",
+//     image: "assets/images/experience-page/amazon-ml.jpg",
+//     desp: "Text sequence Based Multi-class classification on a huge dataset. I solved by ensembling of different state-of-the-art Deep Learning algorithms. ",
+//   },
+//   {
+//     title: "Dphi Deep Learning Bootcamp",
+//     subtitle: "Gender Determination by Morphometry of Eyes",
+//     image: "assets/images/experience-page/dphi-dl.png",
+//     desp: "Participated in this competetion as part of Deep Learning Bootcamp.The challenge is to solve Binary prediction of image: male eye or female eye based on the image of eye.I solved by using different models like DenseNet201 with weights preloaded from Imagenet. I was ranked 14/116 in the competetion. ",
+//   },
+//   {
+//     title: "Geoffrey Hinton Fellowship(GHF)",
+//     subtitle: "Univ.ai Hackathons",
+//     image: "assets/images/experience-page/univ_ai.jpg",
+//     desp: "Partcipated in two hackathon rounds as part oF GHF conducted by Univ.ai and stood 1st in my college.",
+//   },
   
 
-];
+// ];
 
-const showCards3 = () => {
-  let output = "";
-  mentor.forEach(
-    ({ title, image, subtitle, desp}) =>
-      (output += `  
-      <div class="blog-slider__item swiper-slide">
-        <div class="blog-slider__img">
-            <img src="${image}" alt="">
-        </div>
-        <div class="blog-slider__content">
-          <div class="blog-slider__title">${title}</div>
-          <span class="blog-slider__code">${subtitle}</span>
-          <div class="blog-slider__text">${desp}</div>
-          <a href="https://github.com/krishnakaushik25/ML-Hackathons" class="blog-slider__button">Read More</a>   
-        </div>
-      </div>
-      `)
-  );
-  hackathonsection.innerHTML = output;
-};
-document.addEventListener("DOMContentLoaded", showCards3);
+// const showCards3 = () => {
+//   let output = "";
+//   mentor.forEach(
+//     ({ title, image, subtitle, desp}) =>
+//       (output += `  
+//       <div class="blog-slider__item swiper-slide">
+//         <div class="blog-slider__img">
+//             <img src="${image}" alt="">
+//         </div>
+//         <div class="blog-slider__content">
+//           <div class="blog-slider__title">${title}</div>
+//           <span class="blog-slider__code">${subtitle}</span>
+//           <div class="blog-slider__text">${desp}</div>
+//           <a href="https://github.com/krishnakaushik25/ML-Hackathons" class="blog-slider__button">Read More</a>   
+//         </div>
+//       </div>
+//       `)
+//   );
+//   hackathonsection.innerHTML = output;
+// };
+// document.addEventListener("DOMContentLoaded", showCards3);
