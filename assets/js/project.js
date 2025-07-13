@@ -5,7 +5,16 @@ const projectcards = document.querySelector(".projectcards");
 
 // Array of object for projects
 const projects = [
-  
+
+   
+{
+  title: "AI Mini-Labs: RAC, LLM & GENAI Projects",
+  cardImage: "assets/images/project-page/aiminilabs.png",
+  description: "A collection of AI-driven projects focusing on RAC, LLM, and GENAI systems.",
+  Previewlink: "https://github.com/krishnakaushik25/AI-MiniLabs",
+  Githublink: "https://github.com/krishnakaushik25/AI-MiniLabs"
+},
+
   {
     title: "Machine Learning Projects Using Streamlit,FastAPI with Deployment",
     cardImage: "assets/images/project-page/streamlit.jpg",
