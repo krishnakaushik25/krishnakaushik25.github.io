@@ -129,7 +129,7 @@ let footer = $(`
                 <h6 class="display">Get in Touch</h6>
               </div>
                 <form>
-                  <form action="https://formcarry.com/s/S2thQbCqEvW" method="POST" accept-charset="UTF-8" >
+                  <form action="https://formcarry.com/s/ekAzT3uv6uy" method="POST" accept-charset="UTF-8" >
                   <input type="text" name="field1" placeholder="Your Name" required/>
                   <input type="email" name="field2" placeholder="Email Address"  required/>
                   <textarea name="field3" placeholder="Type your Message" required></textarea>
@@ -168,7 +168,7 @@ let footer = $(`
     </a>
 
 
-    <a class="social-button" href="https://discordapp.com/users/707147472098557993" target="_blank" >
+    <a class="social-button" href="https://discordapp.com/users/1264609161854058538" target="_blank" >
     <!-- svg code for discord icon -->
     
     <svg enable-background="new 0 0  512 512" id="Layer_1" version="1.1" width="50px" height="50px" viewBox="0 0  512 512" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -178,7 +178,7 @@ let footer = $(`
     </a>
   
 
-    <a class="social-button twitter" href="https://twitter.com/krishna11novice" target="_blank">
+    <a class="social-button twitter" href="https://twitter.com/KrishnaWanders" target="_blank">
     <!-- SVG code for twitter icon -->
     <svg class="twitter-icon-footer" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
         xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 500 500" enable-background="new 0 0 500 500"

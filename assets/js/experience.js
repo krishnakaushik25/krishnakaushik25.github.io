@@ -5,6 +5,13 @@ AOS.init();
 
 const experiencecards = document.querySelector(".experience-cards");
 const exp = [
+{
+  title: "Data Scientist II & III",
+  cardImage: "assets/images/experience-page/walmart.jpg",
+  place: "Walmart Global Tech",
+  time: "(July 2022 – June 2025)",
+  desp: "Designed and deployed AI systems that delivered $90M+ business impact. Built smart substitution pipelines,price-threshold optimization and LLM-based dietary classifiers. Led agentic feedback systems, segmentation modules, and inference tuning to enhance performance, reduce costs, and increase customer satisfaction across Walmart’s recommendation stack."
+},
   {
     title: "Software Development Intern",
     cardImage: "assets/images/experience-page/publicis-sapient.jpg",
