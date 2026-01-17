@@ -1,0 +1,105 @@
+---
+const navLinks = [
+  { href: '/', label: 'Home' },
+  { href: '/experience', label: 'Experience' },
+  { href: '/projects', label: 'Projects' },
+  { href: '/blog', label: 'Blog' },
+  { href: '/contact', label: 'Contact' },
+];
+
+const currentPath = Astro.url.pathname;
+---
+
+<header class="sticky top-0 z-50 w-full border-b border-white/10 bg-[#0a0a0a]/80 backdrop-blur-md">
+  <div class="container mx-auto flex h-16 items-center justify-between px-4 max-w-6xl">
+    <a href="/" class="flex items-center gap-2 group" transition:name="logo">
+      <span class="text-xl font-bold gradient-text group-hover:opacity-80 transition-opacity">
+        Krishna Kaushik
+      </span>
+    </a>
+
+    <!-- Desktop Navigation -->
+    <nav class="hidden md:flex items-center gap-6">
+      {navLinks.map((link) => (
+        <a
+          href={link.href}
+          class={`text-sm font-medium transition-colors hover:text-cyan-400 ${
+            currentPath === link.href || (link.href !== '/' && currentPath.startsWith(link.href))
+              ? 'text-cyan-400'
+              : 'text-zinc-400'
+          }`}
+        >
+          {link.label}
+        </a>
+      ))}
+    </nav>
+
+    <div class="flex items-center gap-3">
+      <!-- Resume Download -->
+      <a
+        href="/resume.pdf"
+        download
+        class="hidden sm:flex items-center gap-2 px-4 py-2 text-sm font-medium text-zinc-300 border border-zinc-700 rounded-lg hover:border-cyan-500 hover:text-cyan-400 transition-all"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+          <polyline points="7 10 12 15 17 10" />
+          <line x1="12" y1="15" x2="12" y2="3" />
+        </svg>
+        Resume
+      </a>
+
+      <!-- Mobile Menu Toggle -->
+      <button
+        id="mobile-menu-toggle"
+        class="md:hidden p-2 text-zinc-400 hover:text-white transition-colors"
+        aria-label="Toggle menu"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div id="mobile-menu" class="hidden md:hidden border-t border-white/10 bg-[#0a0a0a]">
+    <nav class="container mx-auto px-4 py-4 flex flex-col gap-2">
+      {navLinks.map((link) => (
+        <a
+          href={link.href}
+          class={`px-4 py-3 text-sm font-medium rounded-lg transition-colors ${
+            currentPath === link.href
+              ? 'bg-cyan-500/10 text-cyan-400'
+              : 'text-zinc-400 hover:bg-zinc-800 hover:text-white'
+          }`}
+        >
+          {link.label}
+        </a>
+      ))}
+      <a
+        href="/resume.pdf"
+        download
+        class="flex items-center gap-2 px-4 py-3 text-sm font-medium text-zinc-400 hover:bg-zinc-800 hover:text-white rounded-lg transition-colors"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+          <polyline points="7 10 12 15 17 10" />
+          <line x1="12" y1="15" x2="12" y2="3" />
+        </svg>
+        Download Resume
+      </a>
+    </nav>
+  </div>
+</header>
+
+<script>
+  document.addEventListener('astro:page-load', () => {
+    const toggle = document.getElementById('mobile-menu-toggle');
+    const menu = document.getElementById('mobile-menu');
+
+    toggle?.addEventListener('click', () => {
+      menu?.classList.toggle('hidden');
+    });
+  });
+</script>

@@ -1,0 +1,220 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+
+const experiences = [
+  {
+    role: 'Senior AI Engineer',
+    company: 'ForeStrat.ai',
+    location: 'Remote',
+    period: 'Oct 2025 - Present',
+    type: 'full-time',
+    description: 'Building AI-powered institutional investment platform',
+    highlights: [
+      'Architecting DataStrat - scalable data infrastructure with web scraping pipelines for 100+ vendor datasets',
+      'Building TradeStrat - multi-broker trade operations platform with AI-driven reconciliation',
+      'Integrating LLMs for research automation, data transformation, and anomaly detection',
+      'Full-stack development with Python/FastAPI backend and modern frontend'
+    ],
+    skills: ['Python', 'FastAPI', 'PostgreSQL', 'LLMs', 'Web Scraping', 'RAG', 'Docker'],
+  },
+  {
+    role: 'AI/ML Engineer',
+    company: 'Freelance Consultant',
+    location: 'Remote',
+    period: 'Jun 2025 - Present',
+    type: 'contract',
+    description: 'Independent AI/ML consulting for startups',
+    highlights: [
+      'TableRAG Document Intelligence: Built hybrid RAG system for heterogeneous documents, 85% accuracy improvement',
+      'Product Catalog System: Led entity resolution pipeline canonicalizing 26K products, 70% duplicate reduction'
+    ],
+    skills: ['RAG', 'LangChain', 'Vector DBs', 'Python', 'PostgreSQL'],
+    metrics: { accuracy: '85%', improvement: '70%' },
+  },
+  {
+    role: 'Data Scientist III',
+    company: 'Walmart Global Tech',
+    location: 'Bengaluru, India',
+    period: 'Jun 2024 - Jun 2025',
+    type: 'full-time',
+    description: 'Led ML systems for pricing optimization and compliance',
+    highlights: [
+      'Pricing Optimization Framework: ML system generating $28M incremental revenue, improved accuracy from 10% to 60%',
+      'LLM Compliance System: Multi-model dietary classification pipeline, expanded coverage by 80%, $10M GMV impact',
+      'Intelligent QA Automation: Reduced manual QA cycles by 60%, improved banner production efficiency by 80%'
+    ],
+    skills: ['Python', 'PyTorch', 'LLMs', 'REST APIs', 'GCP', 'Docker'],
+    metrics: { revenue: '$28M', coverage: '80%', gmv: '$10M' },
+  },
+  {
+    role: 'Data Scientist II',
+    company: 'Walmart Global Tech',
+    location: 'Bengaluru, India',
+    period: 'Jul 2022 - Jun 2024',
+    type: 'full-time',
+    description: 'Built full-stack ML pipelines for substitution systems',
+    highlights: [
+      'Full-Stack ML Pipeline: Architected substitution system with SLMs increasing GMV by $40M, 100K+ requests/hour',
+      'Inference Optimization: Applied LoRA fine-tuning achieving 70% performance improvement, deployed on GCP with K8s',
+      'Customer Choice Interface: Launched substitution interface boosting adoption rates by 90%, $10M additional GMV'
+    ],
+    skills: ['Python', 'PyTorch', 'LoRA', 'Kubernetes', 'GCP', 'Docker', 'FastAPI'],
+    metrics: { gmv: '$40M', scale: '100K+/hr', improvement: '70%' },
+  },
+  {
+    role: 'Software Developer Intern',
+    company: 'Publicis Sapient',
+    location: 'Gurugram, India',
+    period: 'May 2021 - Jul 2021',
+    type: 'internship',
+    description: 'Full-stack development for inventory analytics',
+    highlights: [
+      'Delivered inventory analytics app using React, Node.js, and GraphQL',
+      'Increased data visibility and reduced restocking latency by 50%'
+    ],
+    skills: ['React', 'Node.js', 'GraphQL', 'MongoDB'],
+  },
+];
+---
+
+<BaseLayout title="Experience" description="Professional experience as an AI Engineer at ForeStrat.ai and Data Scientist at Walmart Global Tech.">
+  <Navbar slot="header" />
+
+  <section class="container mx-auto px-4 py-12 md:py-20 max-w-4xl">
+    <!-- Header -->
+    <div class="text-center mb-16 reveal">
+      <span class="inline-block px-3 py-1 text-xs font-medium bg-cyan-500/10 text-cyan-400 rounded-full mb-4">
+        Career Journey
+      </span>
+      <h1 class="text-4xl md:text-5xl font-bold text-white mb-4">Experience</h1>
+      <p class="text-zinc-400 max-w-2xl mx-auto">
+        From building $90M+ impact ML systems at Walmart to architecting AI-powered investment platforms at ForeStrat.ai.
+      </p>
+    </div>
+
+    <!-- Timeline -->
+    <div class="relative">
+      <!-- Timeline line -->
+      <div class="absolute left-0 md:left-1/2 transform md:-translate-x-px top-0 bottom-0 w-0.5 bg-zinc-800"></div>
+
+      <div class="space-y-12">
+        {experiences.map((exp, index) => (
+          <div class={`relative flex items-start ${index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'} reveal`}>
+            <!-- Timeline dot -->
+            <div class="absolute left-0 md:left-1/2 transform -translate-x-1/2 w-4 h-4 rounded-full bg-cyan-500 border-4 border-[#0a0a0a] z-10"></div>
+
+            <!-- Content -->
+            <div class={`ml-8 md:ml-0 md:w-1/2 ${index % 2 === 0 ? 'md:pr-12' : 'md:pl-12'}`}>
+              <div class="card p-6">
+                <div class="flex flex-wrap items-center gap-2 mb-3">
+                  <span class={`px-2 py-0.5 text-xs font-medium rounded-full ${
+                    exp.type === 'full-time' ? 'bg-cyan-500/10 text-cyan-400' :
+                    exp.type === 'contract' ? 'bg-purple-500/10 text-purple-400' :
+                    'bg-yellow-500/10 text-yellow-400'
+                  }`}>
+                    {exp.type}
+                  </span>
+                  {exp.metrics && (
+                    <>
+                      {exp.metrics.revenue && (
+                        <span class="px-2 py-0.5 text-xs bg-green-500/10 text-green-400 rounded-full">
+                          {exp.metrics.revenue} revenue
+                        </span>
+                      )}
+                      {exp.metrics.gmv && (
+                        <span class="px-2 py-0.5 text-xs bg-green-500/10 text-green-400 rounded-full">
+                          {exp.metrics.gmv} GMV
+                        </span>
+                      )}
+                      {exp.metrics.scale && (
+                        <span class="px-2 py-0.5 text-xs bg-blue-500/10 text-blue-400 rounded-full">
+                          {exp.metrics.scale}
+                        </span>
+                      )}
+                    </>
+                  )}
+                </div>
+
+                <h3 class="text-xl font-semibold text-white mb-1">{exp.role}</h3>
+
+                <div class="flex flex-col gap-1 text-sm text-zinc-400 mb-4">
+                  <span class="flex items-center gap-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z"/><path d="M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2"/><path d="M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2"/>
+                    </svg>
+                    {exp.company}
+                  </span>
+                  <span class="flex items-center gap-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/>
+                    </svg>
+                    {exp.location}
+                  </span>
+                  <span class="flex items-center gap-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/>
+                    </svg>
+                    {exp.period}
+                  </span>
+                </div>
+
+                <p class="text-sm text-zinc-500 mb-4">{exp.description}</p>
+
+                <ul class="space-y-2 mb-4">
+                  {exp.highlights.map((highlight) => (
+                    <li class="text-sm text-zinc-300 flex items-start gap-2">
+                      <span class="text-cyan-400 mt-1">&#8226;</span>
+                      <span>{highlight}</span>
+                    </li>
+                  ))}
+                </ul>
+
+                <div class="flex flex-wrap gap-1.5">
+                  {exp.skills.map((skill) => (
+                    <span class="px-2 py-0.5 text-xs bg-zinc-800 text-zinc-400 rounded-md">
+                      {skill}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <!-- Education Section -->
+    <div class="mt-20">
+      <div class="text-center mb-12 reveal">
+        <span class="inline-block px-3 py-1 text-xs font-medium bg-cyan-500/10 text-cyan-400 rounded-full mb-4">
+          Education
+        </span>
+        <h2 class="text-3xl font-bold text-white">Academic Background</h2>
+      </div>
+
+      <div class="max-w-2xl mx-auto reveal">
+        <div class="card p-6">
+          <div class="flex items-start justify-between">
+            <div>
+              <h3 class="text-xl font-semibold text-white">B.Tech in Electronics & Communications</h3>
+              <p class="text-zinc-400">Indian Institute of Technology (IIT) Guwahati</p>
+              <p class="text-sm text-zinc-500 mt-1">Jul 2018 - May 2022</p>
+            </div>
+            <span class="px-3 py-1 text-xs font-medium bg-cyan-500/10 text-cyan-400 rounded-full">
+              IIT
+            </span>
+          </div>
+          <div class="mt-4 space-y-2 text-sm text-zinc-300">
+            <p><span class="font-medium text-zinc-200">Relevant Coursework:</span> Data Structures & Algorithms, Database Systems, Software Engineering</p>
+            <p><span class="font-medium text-zinc-200">Achievement:</span> Top 5% in Amazon ML Challenge with ensemble NLP models</p>
+            <p><span class="font-medium text-zinc-200">JEE Advanced:</span> AIR 1351 (Top 0.6%)</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <Footer slot="footer" />
+</BaseLayout>

@@ -1,0 +1,184 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+import MetricCard from '../components/MetricCard.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+import Hero3D from '../components/Hero3D.tsx';
+
+const skills = [
+  'LLM Systems', 'RAG Pipelines', 'Production ML', 'Full-Stack AI',
+  'Python', 'FastAPI', 'PyTorch', 'LangChain'
+];
+
+const featuredProjects = [
+  {
+    title: 'Interactive Knowledge Agent',
+    description: 'RAG system with deterministic multi-step agent architecture for dynamic information retrieval',
+    tags: ['LangChain', 'OpenAI', 'Streamlit', 'Python'],
+    github: 'https://github.com/krishnakaushik25/AI-MiniLabs/tree/main/Interactive-Knowledge-Agent',
+    featured: true,
+  },
+  {
+    title: 'Voicebot RealTime LLM',
+    description: 'Real-time conversational voice assistant with transcription and speech synthesis',
+    tags: ['Whisper', 'GPT-4', 'ElevenLabs', 'WebSocket'],
+    github: 'https://github.com/krishnakaushik25/AI-MiniLabs/tree/main/Voicebot-RealTime-LLM',
+    featured: true,
+  },
+  {
+    title: 'FinChat GPT-4o StockRAG',
+    description: 'Real-time stock analytics with GPT-4o and Azure AI for financial insights',
+    tags: ['GPT-4o', 'Azure AI', 'Finance APIs', 'Streamlit'],
+    github: 'https://github.com/krishnakaushik25/AI-MiniLabs/tree/main/FinChat-GPT4o-StockRAG',
+    featured: true,
+  },
+  {
+    title: 'eKYC AI Pipeline',
+    description: 'Complete identity verification pipeline combining OCR, vision, and LLM reasoning',
+    tags: ['OCR', 'Computer Vision', 'LLMs', 'Python'],
+    github: 'https://github.com/krishnakaushik25/AI-MiniLabs/tree/main/eKYC-AI-Exploration',
+    featured: true,
+  },
+];
+---
+
+<BaseLayout title="Home">
+  <Navbar slot="header" />
+
+  <!-- Hero Section with Bento Grid -->
+  <section class="container mx-auto px-4 py-12 md:py-20 max-w-6xl">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-4 md:gap-6">
+
+      <!-- Main Intro Card (spans 8 cols on large screens) -->
+      <div class="lg:col-span-8 card p-8 md:p-10 reveal">
+        <div class="flex flex-col h-full justify-between">
+          <div>
+            <span class="inline-block px-3 py-1 text-xs font-medium bg-cyan-500/10 text-cyan-400 rounded-full mb-4">
+              Available for opportunities
+            </span>
+
+            <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-4">
+              Hey, I'm <span class="gradient-text">Krishna Kaushik</span>
+            </h1>
+
+            <h2 class="text-xl md:text-2xl text-zinc-400 mb-6">
+              Senior AI Engineer | LLM Systems | Production ML
+            </h2>
+
+            <p class="text-zinc-400 max-w-2xl mb-8 leading-relaxed">
+              Building AI-powered institutional investment platform at
+              <span class="text-white font-medium">ForeStrat.ai</span>.
+              Previously delivered
+              <span class="text-cyan-400 font-medium">$90M+</span> business impact at
+              Walmart through production ML systems handling
+              <span class="text-cyan-400 font-medium">100K+ requests/hour</span>.
+            </p>
+          </div>
+
+          <!-- Skills -->
+          <div class="flex flex-wrap gap-2">
+            {skills.map((skill) => (
+              <span class="px-3 py-1.5 text-sm bg-zinc-800/50 text-zinc-300 rounded-lg border border-zinc-700/50 hover:border-cyan-500/50 transition-colors">
+                {skill}
+              </span>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      <!-- Metrics Grid (spans 4 cols, 2x2 grid) -->
+      <div class="lg:col-span-4 grid grid-cols-2 gap-4">
+        <MetricCard value="$90M+" label="Business Impact" icon="dollar" className="reveal" />
+        <MetricCard value="100K+" label="Requests/Hour" icon="zap" className="reveal" />
+        <MetricCard value="70%" label="Performance Gains" icon="trending" className="reveal" />
+        <MetricCard value="16+" label="AI Projects" icon="code" className="reveal" />
+      </div>
+
+      <!-- 3D Hero Section -->
+      <div class="lg:col-span-8 reveal">
+        <Hero3D client:load />
+      </div>
+
+      <!-- CTA Card -->
+      <div class="lg:col-span-4 card p-6 flex flex-col justify-between reveal">
+        <div>
+          <h3 class="text-lg font-semibold text-white mb-2">Let's Connect</h3>
+          <p class="text-sm text-zinc-400 mb-4">
+            Interested in AI/ML collaboration, consulting, or full-time opportunities.
+          </p>
+        </div>
+
+        <div class="flex flex-col gap-3">
+          <a
+            href="/contact"
+            class="w-full py-3 px-4 bg-gradient-to-r from-cyan-500 to-blue-500 text-white text-center font-medium rounded-lg hover:opacity-90 transition-opacity"
+          >
+            Get in Touch
+          </a>
+          <a
+            href="/projects"
+            class="w-full py-3 px-4 border border-zinc-700 text-zinc-300 text-center font-medium rounded-lg hover:border-cyan-500 hover:text-white transition-colors"
+          >
+            View Projects
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Projects Section -->
+  <section class="container mx-auto px-4 py-16 max-w-6xl">
+    <div class="text-center mb-12 reveal">
+      <span class="inline-block px-3 py-1 text-xs font-medium bg-cyan-500/10 text-cyan-400 rounded-full mb-4">
+        AI-MiniLabs
+      </span>
+      <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Featured Projects</h2>
+      <p class="text-zinc-400 max-w-2xl mx-auto">
+        A collection of 16+ cutting-edge AI/ML projects exploring LLMs, multimodal systems, and production-ready applications.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
+      {featuredProjects.map((project) => (
+        <div class="reveal">
+          <ProjectCard {...project} />
+        </div>
+      ))}
+    </div>
+
+    <div class="text-center mt-10 reveal">
+      <a
+        href="/projects"
+        class="inline-flex items-center gap-2 px-6 py-3 text-sm font-medium border border-zinc-700 text-zinc-300 rounded-lg hover:border-cyan-500 hover:text-white transition-colors"
+      >
+        View All Projects
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="5" y1="12" x2="19" y2="12" />
+          <polyline points="12 5 19 12 12 19" />
+        </svg>
+      </a>
+    </div>
+  </section>
+
+  <!-- Tech Stack Section -->
+  <section class="container mx-auto px-4 py-16 max-w-6xl">
+    <div class="card p-8 md:p-12 reveal">
+      <div class="text-center mb-8">
+        <h2 class="text-2xl md:text-3xl font-bold text-white mb-2">Tech Stack</h2>
+        <p class="text-zinc-400">Technologies I work with daily</p>
+      </div>
+
+      <div class="flex justify-center">
+        <img
+          src="https://skillicons.dev/icons?i=python,pytorch,fastapi,docker,kubernetes,gcp,aws,postgres,react,typescript&theme=dark"
+          alt="Tech Stack"
+          class="max-w-full"
+          loading="lazy"
+        />
+      </div>
+    </div>
+  </section>
+
+  <Footer slot="footer" />
+</BaseLayout>

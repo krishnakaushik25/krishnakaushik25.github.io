@@ -1,0 +1,258 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+
+const projects = [
+  {
+    title: 'Interactive Knowledge Agent',
+    description: 'RAG system with deterministic multi-step agent architecture for dynamic information retrieval and synthesis',
+    tags: ['LangChain', 'OpenAI', 'Streamlit', 'Python'],
+    github: 'https://github.com/krishnakaushik25/AI-MiniLabs/tree/main/Interactive-Knowledge-Agent',
+    category: 'ai-minilabs',
+    featured: true,
+  },
+  {
+    title: 'Voicebot RealTime LLM',
+    description: 'Real-time conversational voice assistant with transcription and speech synthesis capabilities',
+    tags: ['Whisper', 'GPT-4', 'ElevenLabs', 'WebSocket', 'Python'],
+    github: 'https://github.com/krishnakaushik25/AI-MiniLabs/tree/main/Voicebot-RealTime-LLM',
+    category: 'ai-minilabs',
+    featured: true,
+  },
+  {
+    title: 'Website RAG Colivara',
+    description: 'Multimodal RAG system processing both text and visual content from complex websites',
+    tags: ['Vision Models', 'RAG', 'Web Scraping', 'Python'],
+    github: 'https://github.com/krishnakaushik25/AI-MiniLabs/tree/main/Website-RAG-Colivara',
+    category: 'ai-minilabs',
+    featured: true,
+  },
+  {
+    title: 'FinChat GPT-4o StockRAG',
+    description: 'Real-time stock analytics with GPT-4o and Azure AI integration for financial insights',
+    tags: ['GPT-4o', 'Azure AI', 'Financial APIs', 'Streamlit'],
+    github: 'https://github.com/krishnakaushik25/AI-MiniLabs/tree/main/FinChat-GPT4o-StockRAG',
+    category: 'ai-minilabs',
+    featured: true,
+  },
+  {
+    title: 'eKYC AI Pipeline',
+    description: 'Complete identity verification pipeline combining OCR, vision, and LLM reasoning for eKYC workflows',
+    tags: ['OCR', 'Computer Vision', 'LLMs', 'Python'],
+    github: 'https://github.com/krishnakaushik25/AI-MiniLabs/tree/main/eKYC-AI-Exploration',
+    category: 'ai-minilabs',
+    featured: true,
+  },
+  {
+    title: 'ML CI/CD Pipeline',
+    description: 'GitHub Actions automation for ML training, evaluation, and Hugging Face deployment',
+    tags: ['GitHub Actions', 'HuggingFace', 'Docker', 'MLflow'],
+    github: 'https://github.com/krishnakaushik25/AI-MiniLabs/tree/main/ML-CICD-Pipeline',
+    category: 'mlops',
+    featured: true,
+  },
+  {
+    title: 'Multimodal RAG Deepseek',
+    description: 'Vision-language reasoning system using DeepSeek Janus-Pro for document analysis',
+    tags: ['DeepSeek', 'Vision-Language', 'RAG', 'Python'],
+    github: 'https://github.com/krishnakaushik25/AI-MiniLabs/tree/main/Multimodal-RAG-Deepseek',
+    category: 'ai-minilabs',
+    featured: false,
+  },
+  {
+    title: 'AudioChat Transcriber RAG',
+    description: 'Pipeline combining audio transcription with RAG for spoken content understanding',
+    tags: ['Whisper', 'RAG', 'LangChain', 'Python'],
+    github: 'https://github.com/krishnakaushik25/AI-MiniLabs/tree/main/AudioChat-Transcriber-RAG',
+    category: 'ai-minilabs',
+    featured: false,
+  },
+  {
+    title: 'Local LLM Chatbot',
+    description: 'Offline ChatGPT-like interface powered by LLaMA 3.2 Vision',
+    tags: ['LLaMA', 'Ollama', 'Python', 'Streamlit'],
+    github: 'https://github.com/krishnakaushik25/AI-MiniLabs/tree/main/Local-LLM-Chatbot',
+    category: 'ai-minilabs',
+    featured: false,
+  },
+  {
+    title: 'RL Reasoning LLMs',
+    description: 'Reinforcement learning experiments (PPO, GRPO) for LLM reasoning enhancement',
+    tags: ['PyTorch', 'PPO', 'GRPO', 'Transformers'],
+    github: 'https://github.com/krishnakaushik25/AI-MiniLabs/tree/main/RL-Reasoning-LLMs',
+    category: 'research',
+    featured: false,
+  },
+  {
+    title: 'RAG AWS Chatbot',
+    description: 'AWS Bedrock-based chatbot using Knowledge Bases and S3 integration',
+    tags: ['AWS Bedrock', 'S3', 'LangChain', 'Python'],
+    github: 'https://github.com/krishnakaushik25/AI-MiniLabs/tree/main/RAG-AWS-Chatbot',
+    category: 'production',
+    featured: false,
+  },
+  {
+    title: 'Face Anti-Spoofing',
+    description: 'Deep learning for facial spoofing detection in eKYC workflows',
+    tags: ['PyTorch', 'Computer Vision', 'CNN', 'Python'],
+    github: 'https://github.com/krishnakaushik25/AI-MiniLabs/tree/main/Face-AntiSpoofing-Exploration',
+    category: 'ai-minilabs',
+    featured: false,
+  },
+  {
+    title: 'SmartQuizBuilder AI',
+    description: 'PDF-based quiz generation using Google Vertex AI and Streamlit',
+    tags: ['Vertex AI', 'Streamlit', 'LangChain', 'Python'],
+    github: 'https://github.com/krishnakaushik25/AI-MiniLabs/tree/main/SmartQuizBuilder-AI',
+    category: 'ai-minilabs',
+    featured: false,
+  },
+  {
+    title: 'SDV MCP Synthetic Data Server',
+    description: 'Synthetic tabular data generation via MCP-based server using SDV',
+    tags: ['SDV', 'MCP', 'Python', 'FastAPI'],
+    github: 'https://github.com/krishnakaushik25/AI-MiniLabs/tree/main/SDV-MCP-SyntheticDataServer',
+    category: 'data-engineering',
+    featured: false,
+  },
+  {
+    title: 'ModernBERT RAG',
+    description: 'Long-context document Q&A with ModernBERT for efficient retrieval',
+    tags: ['ModernBERT', 'RAG', 'Transformers', 'Python'],
+    github: 'https://github.com/krishnakaushik25/AI-MiniLabs/tree/main/ModernBERT-RAG',
+    category: 'ai-minilabs',
+    featured: false,
+  },
+  {
+    title: 'Finance ML Forecasting',
+    description: 'Cash liquidity forecasting and cash flow optimization models',
+    tags: ['XGBoost', 'Time Series', 'Python', 'Pandas'],
+    github: 'https://github.com/krishnakaushik25/AI-MiniLabs/tree/main/FinanceML-Realworld-Forecasting',
+    category: 'production',
+    featured: false,
+  },
+  {
+    title: 'Streamlit Projects',
+    description: 'Collection of web apps built with Streamlit for various use cases',
+    tags: ['Streamlit', 'Python', 'Pandas', 'Plotly'],
+    github: 'https://github.com/krishnakaushik25/Streamlit-Projects',
+    category: 'full-stack',
+    featured: false,
+  },
+  {
+    title: 'Django eCommerce',
+    description: 'Full-featured eCommerce site with RDS Postgres, deployed on AWS',
+    tags: ['Django', 'PostgreSQL', 'AWS', 'Docker'],
+    github: 'https://github.com/krishnakaushik25/Django-eCommerce-website',
+    category: 'full-stack',
+    featured: false,
+  },
+];
+
+const categories = ['all', ...new Set(projects.map(p => p.category))];
+---
+
+<BaseLayout title="Projects" description="A collection of 16+ AI/ML projects including RAG systems, LLM applications, and production ML pipelines.">
+  <Navbar slot="header" />
+
+  <section class="container mx-auto px-4 py-12 md:py-20 max-w-6xl">
+    <!-- Header -->
+    <div class="text-center mb-12 reveal">
+      <span class="inline-block px-3 py-1 text-xs font-medium bg-cyan-500/10 text-cyan-400 rounded-full mb-4">
+        Portfolio
+      </span>
+      <h1 class="text-4xl md:text-5xl font-bold text-white mb-4">Projects</h1>
+      <p class="text-zinc-400 max-w-2xl mx-auto">
+        A collection of {projects.length}+ projects spanning AI/ML systems, production applications, and experimental research.
+      </p>
+    </div>
+
+    <!-- Filters -->
+    <div class="flex flex-wrap justify-center gap-2 mb-8 reveal" id="filters">
+      {categories.map((cat) => (
+        <button
+          data-category={cat}
+          class={`px-4 py-2 text-sm font-medium rounded-lg transition-all filter-btn ${
+            cat === 'all' ? 'bg-cyan-500 text-white' : 'bg-zinc-800 text-zinc-400 hover:text-white'
+          }`}
+        >
+          {cat === 'all' ? 'All Projects' : cat.replace('-', ' ')}
+        </button>
+      ))}
+    </div>
+
+    <!-- Results count -->
+    <div class="text-center mb-8 text-sm text-zinc-500 reveal">
+      Showing <span id="count">{projects.length}</span> of {projects.length} projects
+    </div>
+
+    <!-- Projects Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6" id="projects-grid">
+      {projects.sort((a, b) => (b.featured ? 1 : 0) - (a.featured ? 1 : 0)).map((project) => (
+        <div class="reveal project-item" data-category={project.category}>
+          <ProjectCard {...project} />
+        </div>
+      ))}
+    </div>
+
+    <!-- AI-MiniLabs CTA -->
+    <div class="mt-16 text-center p-8 card reveal">
+      <h2 class="text-2xl font-bold text-white mb-4">AI-MiniLabs Repository</h2>
+      <p class="text-zinc-400 mb-6 max-w-xl mx-auto">
+        Explore 16+ cutting-edge AI/ML mini-projects including RAG systems, voice assistants, multimodal AI, and production ML pipelines.
+      </p>
+      <a
+        href="https://github.com/krishnakaushik25/AI-MiniLabs"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-cyan-500 to-blue-500 text-white font-medium rounded-lg hover:opacity-90 transition-opacity"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+        </svg>
+        View on GitHub
+      </a>
+    </div>
+  </section>
+
+  <Footer slot="footer" />
+</BaseLayout>
+
+<script>
+  document.addEventListener('astro:page-load', () => {
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const projectItems = document.querySelectorAll('.project-item');
+    const countEl = document.getElementById('count');
+
+    filterBtns.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const category = btn.getAttribute('data-category');
+
+        // Update active state
+        filterBtns.forEach((b) => {
+          b.classList.remove('bg-cyan-500', 'text-white');
+          b.classList.add('bg-zinc-800', 'text-zinc-400');
+        });
+        btn.classList.remove('bg-zinc-800', 'text-zinc-400');
+        btn.classList.add('bg-cyan-500', 'text-white');
+
+        // Filter projects
+        let visibleCount = 0;
+        projectItems.forEach((item) => {
+          const itemCategory = item.getAttribute('data-category');
+          if (category === 'all' || itemCategory === category) {
+            (item as HTMLElement).style.display = 'block';
+            visibleCount++;
+          } else {
+            (item as HTMLElement).style.display = 'none';
+          }
+        });
+
+        // Update count
+        if (countEl) countEl.textContent = String(visibleCount);
+      });
+    });
+  });
+</script>

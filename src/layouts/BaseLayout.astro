@@ -1,0 +1,90 @@
+---
+import { ViewTransitions } from 'astro:transitions';
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const {
+  title,
+  description = "Senior AI Engineer building production LLM systems, RAG pipelines, and ML infrastructure. $90M+ business impact. Experience at ForeStrat.ai and Walmart Global Tech."
+} = Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="canonical" href={canonicalURL} />
+
+    <!-- SEO -->
+    <title>{title} | Krishna Kaushik</title>
+    <meta name="description" content={description} />
+    <meta name="author" content="Krishna Kaushik" />
+    <meta name="keywords" content="AI Engineer, Machine Learning, LLM, RAG, Python Developer, Full Stack, Data Scientist" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:title" content={`${title} | Krishna Kaushik`} />
+    <meta property="og:description" content={description} />
+    <meta property="og:site_name" content="Krishna Kaushik Portfolio" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:creator" content="@KrishnaWanders" />
+    <meta name="twitter:title" content={`${title} | Krishna Kaushik`} />
+    <meta name="twitter:description" content={description} />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+    <!-- View Transitions -->
+    <ViewTransitions />
+  </head>
+  <body class="min-h-screen flex flex-col">
+    <slot name="header" />
+    <main class="flex-1">
+      <slot />
+    </main>
+    <slot name="footer" />
+
+    <!-- GSAP for scroll animations -->
+    <script>
+      import gsap from 'gsap';
+      import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+      gsap.registerPlugin(ScrollTrigger);
+
+      // Reveal animations on scroll
+      document.addEventListener('astro:page-load', () => {
+        const reveals = document.querySelectorAll('.reveal');
+
+        reveals.forEach((el) => {
+          gsap.fromTo(el,
+            { opacity: 0, y: 30 },
+            {
+              opacity: 1,
+              y: 0,
+              duration: 0.8,
+              ease: 'power2.out',
+              scrollTrigger: {
+                trigger: el,
+                start: 'top 85%',
+                toggleActions: 'play none none reverse'
+              }
+            }
+          );
+        });
+      });
+    </script>
+  </body>
+</html>
