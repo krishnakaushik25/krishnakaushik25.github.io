@@ -33,6 +33,22 @@ jobs:
       - name: Build Astro
         run: npm run build
 
+      - name: Verify build output
+        run: |
+          echo "🔍 Verifying build output..."
+          if [ ! -f "./dist/index.html" ]; then
+            echo "❌ ERROR: Build failed - index.html not found in dist/"
+            exit 1
+          fi
+          if grep -q "Krishna Kaushik" ./dist/index.html; then
+            echo "✅ Content verification passed"
+          else
+            echo "❌ ERROR: Content verification failed - 'Krishna Kaushik' not found"
+            exit 1
+          fi
+          echo "📁 Build output:"
+          ls -la ./dist/
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
@@ -48,3 +64,8 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+
+      - name: Deployment Summary
+        run: |
+          echo "🚀 Deployment completed!"
+          echo "🌐 Site URL: ${{ steps.deployment.outputs.page_url }}"
